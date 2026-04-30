@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shehan & Chalani — Wedding Invitation</title>
+  <meta name="description" content="You are cordially invited to celebrate the union of Shehan & Chalani — August 30, 2026." />
+  <meta property="og:title" content="Shehan & Chalani — Wedding Invitation" />
+  <meta property="og:description" content="Join us as we celebrate our wedding on August 30, 2026." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Allura&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <canvas id="particleCanvas"></canvas>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Tropical corner decorations — fixed -->
+  <div class="corner-flower corner-flower-tl" aria-hidden="true">
+    
+  </div>
+  <div class="corner-flower corner-flower-br" aria-hidden="true">
+    <!-- <img src="assets/tropical_flowers_1777139228896.webp" alt="" loading="lazy" /> -->
+  </div>
+
+  <!-- Background Audio -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/wedding-background.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ══════ ENVELOPE SCREEN ══════ -->
+  <section id="envelope" class="envelope-screen">
+    <!-- Soft watercolor backdrop -->
+    <div class="env-watercolor" aria-hidden="true"></div>
+
+    <!-- Floating florals — 6 layered decorations with live animation -->
+    <img src="assets/left_top.webp"     alt="" class="env-floral env-floral-lt" loading="eager" aria-hidden="true" />
+    <img src="assets/right_top.webp"    alt="" class="env-floral env-floral-rt" loading="eager" aria-hidden="true" />
+    <img src="assets/left_center.webp"  alt="" class="env-floral env-floral-lc" loading="eager" aria-hidden="true" />
+    <img src="assets/right_center.webp" alt="" class="env-floral env-floral-rc" loading="eager" aria-hidden="true" />
+    <img src="assets/left_bottom.webp"  alt="" class="env-floral env-floral-lb" loading="eager" aria-hidden="true" />
+    <img src="assets/right_bottom.webp" alt="" class="env-floral env-floral-rb" loading="eager" aria-hidden="true" />
+
+    <!-- Floating sparkles -->
+    <div class="env-sparkles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="envelope-glow"></div>
+
+    <div class="envelope-wrapper">
+      <div class="envelope-outer">
+        <!-- Body sits behind everything -->
+        <div class="envelope-body"></div>
+
+        <!-- Inside text — hidden when flap is closed, revealed when it opens -->
+        <div class="envelope-text">
+          <p class="envelope-subtitle playfair">YOU ARE INVITED TO</p>
+          <h1 class="envelope-names great-vibes">Shehan &amp; Chalani</h1>
+          <p class="envelope-date playfair">AUGUST 30, 2026</p>
+        </div>
+
+        <!-- Triangular flap on top -->
+        <div class="envelope-flap" id="envelopeFlap">
+          
+        </div>
+
+        <!-- Monogram — appears on the flap -->
+        <div class="envelope-monogram playfair" aria-hidden="true">S &nbsp;&amp;&nbsp; C</div>
+
+        <!-- Wax seal — sits at the flap apex, on top of both flap and body -->
+        <img src="assets/wax_seal.webp" alt="Wax seal" class="wax-seal" id="waxSeal" />
+      </div>
+      <button class="open-btn" id="openEnvelope" type="button" aria-label="Open the wedding invitation">
+        <span class="open-btn-text outfit">Open Invitation</span>
+        <span class="open-btn-icon" aria-hidden="true">❤️</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ══════ MAIN INVITATION ══════ -->
+  <main id="invitation" class="invitation hidden">
+
+    <!-- HERO -->
+    <section id="hero" class="hero-section">
+      <div class="hero-parallax-bg">
+        <img src="assets/cover_firstpg.webp" alt="" class="hero-bg-img" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <p class="hero-label playfair reveal-up font-animate">YOU ARE INVITED TO</p>
+        <h1 class="hero-names reveal-up">
+          <span class="hero-name-first great-vibes font-animate">Shehan</span>
+          <span class="hero-amp great-vibes">and</span>
+          <span class="hero-name-last great-vibes font-animate">Chalani</span>
+        </h1>
+        <p class="hero-honor playfair reveal-up font-animate">IN HONOR OF THEIR WEDDING</p>
+        <div class="hero-divider-line reveal-up"></div>
+        <p class="hero-invite cormorant reveal-up font-animate">invite you to be part of<br/>their special day</p>
+      
+        <p class="hero-venue cormorant reveal-up">St. Augustine Seaside Chapel<br/>St. Augustine, FL</p>
+        <div class="scroll-indicator" id="scrollIndicator">
+          <span class="scroll-text outfit">Scroll</span>
+          <div class="scroll-arrow"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section id="countdown" class="countdown-section">
+      <div class="section-container">
+        <h3 class="section-title playfair reveal-up font-animate">COUNTING THE DAYS</h3>
+
+
+
+        <!-- Save the Date card -->
+        <div class="save-the-date reveal-up">
+          <img class="std-floral std-floral-tl" src="assets/left-top-flower.webp" alt="" loading="lazy" />
+          <img class="std-floral std-floral-tr" src="assets/right-top-flower.webp" alt="" loading="lazy" />
+
+          <img class="std-cover" src="assets/weddingcover.webp" alt="Illustration of the bride and groom" loading="lazy" />
+        </div>
+        <!-- Live countdown numbers -->
+        <div class="countdown-grid" id="countdownGrid">
+          <div class="countdown-card">
+            <span class="countdown-number" id="cdDays">000</span>
+            <span class="countdown-label outfit">Days</span>
+          </div>
+          <div class="countdown-card">
+            <span class="countdown-number" id="cdHours">00</span>
+            <span class="countdown-label outfit">Hours</span>
+          </div>
+          <div class="countdown-card">
+            <span class="countdown-number" id="cdMinutes">00</span>
+            <span class="countdown-label outfit">Minutes</span>
+          </div>
+        </div>
+        <!-- Month calendar card -->
+        <div class="month-calendar reveal-up">
+          <img class="mcal-img" src="assets/month-calander.webp" alt="Wedding month calendar" loading="lazy" />
+          <img class="mcal-floral" src="assets/calander_folwer.webp" alt="" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY — Photo Strip style (moved up for emotional impact) -->
+    <section id="gallery" class="gallery-section">
+      <div class="section-container">
+        <h2 class="section-title playfair reveal-up font-animate">OUR MOMENTS</h2>
+        <div class="tropical-divider reveal-up"><img src="assets/6.webp" alt="" loading="lazy" /></div>
+        <div class="photo-strip">
+          <div class="photo-frame reveal-scale"><img src="assets/020_gallry.webp" alt="The couple together" loading="lazy" /></div>
+          <div class="photo-frame reveal-scale"><img src="assets/021_gallry.webp" alt="A romantic moment" loading="lazy" /></div>
+          <div class="photo-frame reveal-scale"><img src="assets/022_gallry.webp" alt="Engagement photo" loading="lazy" /></div>
+          <div class="photo-frame reveal-scale"><img src="assets/023_gallry.webp" alt="By the seaside" loading="lazy" /></div>
+          <div class="photo-frame reveal-scale"><img src="assets/025_gallry.webp" alt="Botanical scene" loading="lazy" /></div>
+          <div class="photo-frame reveal-scale"><img src="assets/024_gallry.webp" alt="Floral keepsake" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENUE / DETAILS -->
+    <section id="details" class="details-section">
+      <div class="details-bg-wrapper">
+        <img src="assets/2222.webp" alt="" class="details-bg-img" loading="lazy" />
+        <div class="details-overlay"></div>
+      </div>
+      <div class="section-container details-content">
+        <h2 class="section-title playfair reveal-up font-animate section-title--light">WEDDING DETAILS</h2>
+        <!-- <div class="tropical-divider reveal-up"><img src="assets/botanical_divider.webp" alt="" loading="lazy" /></div> -->
+        <div class="details-grid">
+          <div class="detail-card glass-card">
+            <div class="detail-icon" aria-hidden="true">💒</div>
+            <h3 class="cormorant">Ceremony</h3>
+            <p class="outfit">9:45 AM</p>
+            <p class="outfit detail-venue">Poruwa Ceremony</p>
+            <p class="outfit detail-address">Hotel Isuru city, Dambulla</p>
+            <a class="map-link outfit" href="https://maps.app.goo.gl/w6Ud6zC78SGuoApC6" target="_blank" rel="noopener noreferrer" aria-label="Open ceremony location in Google Maps">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              View Location
+            </a>
+          </div>
+          
+          <div class="detail-card glass-card">
+            <div class="detail-icon" aria-hidden="true">👗</div>
+            <h3 class="cormorant">Dress Code</h3>
+            <p class="outfit">Semi-Formal / Cultural</p>
+            <p class="outfit detail-address">Light, festive colours<br/>Saree / Osariya welcome</p>
+          </div>
+
+          <br>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ WEDDING DAY SCHEDULE ══════ -->
+    <section id="schedule" class="schedule-section">
+      <div class="section-container">
+        <h2 class="section-title playfair reveal-up font-animate">WEDDING DAY SCHEDULE</h2>
+        <div class="tropical-divider reveal-up"><img src="assets/3.webp" alt="" loading="lazy" /></div>
+        <p class="schedule-subtitle cormorant reveal-up">A guide to our day, moment by moment.</p>
+
+        <div class="schedule-grid">
+
+          <div class="schedule-block reveal-up">
+            <div class="schedule-block-header">
+              <span class="schedule-block-icon" aria-hidden="true">🌅</span>
+              <h3 class="schedule-block-title cormorant">Morning Ceremony</h3>
+            </div>
+            <ul class="schedule-list">
+              <li class="schedule-item">
+                <span class="schedule-time outfit">9:15 AM</span>
+                <span class="schedule-event outfit">Tea Table Opens</span>
+              </li>
+              <li class="schedule-item schedule-highlight">
+                <span class="schedule-time outfit">9:45 AM</span>
+                <span class="schedule-event outfit">Poruwa Ceremony Starts</span>
+              </li>
+              <li class="schedule-item">
+                <span class="schedule-time outfit">10:35 AM</span>
+                <span class="schedule-event outfit">End of Poruwa Ceremony</span>
+              </li>
+              <li class="schedule-item">
+                <span class="schedule-time outfit">10:40 AM</span>
+                <span class="schedule-event outfit">Oil Lamp &amp; Milk Rice Cutting</span>
+              </li>
+              <li class="schedule-item">
+                <span class="schedule-time outfit">10:40 AM</span>
+                <span class="schedule-event outfit">Serving Welcome Drink</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="schedule-block reveal-up">
+            <div class="schedule-block-header">
+              <span class="schedule-block-icon" aria-hidden="true">🍽️</span>
+              <h3 class="schedule-block-title cormorant">Reception &amp; Lunch</h3>
+            </div>
+            <ul class="schedule-list">
+              <li class="schedule-item">
+                <span class="schedule-time outfit">11:00 AM</span>
+                <span class="schedule-event outfit">Registration</span>
+              </li>
+              <li class="schedule-item">
+                <span class="schedule-time outfit">12:00 PM</span>
+                <span class="schedule-event outfit">Bar Opens</span>
+              </li>
+              <li class="schedule-item schedule-highlight">
+                <span class="schedule-time outfit">1:00 PM</span>
+                <span class="schedule-event outfit">Buffet Opens</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="schedule-block reveal-up">
+            <div class="schedule-block-header">
+              <span class="schedule-block-icon" aria-hidden="true">📸</span>
+              <h3 class="schedule-block-title cormorant">Going-Away &amp; Cake</h3>
+            </div>
+            <ul class="schedule-list">
+              <li class="schedule-item">
+                <span class="schedule-time outfit">1:30 PM</span>
+                <span class="schedule-event outfit">Going-Away Changing</span>
+              </li>
+              <li class="schedule-item">
+                <span class="schedule-time outfit">2:30 PM</span>
+                <span class="schedule-event outfit">Going-Away Photo Shoot</span>
+              </li>
+              <li class="schedule-item schedule-highlight">
+                <span class="schedule-time outfit">2:45 PM</span>
+                <span class="schedule-event outfit">Cake Cutting</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="schedule-block reveal-up">
+            <div class="schedule-block-header">
+              <span class="schedule-block-icon" aria-hidden="true">🎶</span>
+              <h3 class="schedule-block-title cormorant">Speeches &amp; Send-Off</h3>
+            </div>
+            <ul class="schedule-list">
+              <li class="schedule-item">
+                <span class="schedule-time outfit">4:20 PM</span>
+                <span class="schedule-event outfit">DJ &amp; Dance Floor Ends</span>
+              </li>
+              <li class="schedule-item">
+                <span class="schedule-time outfit">4:25 PM</span>
+                <span class="schedule-event outfit">Speech — Bride's Side</span>
+              </li>
+              <li class="schedule-item">
+                <span class="schedule-time outfit">4:30 PM</span>
+                <span class="schedule-event outfit">Speech — Groom's Side</span>
+              </li>
+              <li class="schedule-item">
+                <span class="schedule-time outfit">4:35 PM</span>
+                <span class="schedule-event outfit">Another Speech</span>
+              </li>
+              <li class="schedule-item schedule-highlight">
+                <span class="schedule-time outfit">4:50 PM</span>
+                <span class="schedule-event outfit">Departure from Hotel</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="rsvp-section">
+      <div class="section-container">
+        <h2 class="section-title playfair reveal-up font-animate">KINDLY RESPOND</h2>
+        <div class="tropical-divider reveal-up"><img src="assets/5.webp" alt="" loading="lazy" /></div>
+        <p class="rsvp-subtitle outfit reveal-up">We would be honored by your presence. Please let us know by june 11, 2026.</p>
+
+        <!-- Quick RSVP via WhatsApp (replace 94XXXXXXXXX with the couple's number, no + or spaces) -->
+        <a class="whatsapp-btn outfit reveal-up" id="whatsappRsvp"
+           href="https://wa.me/94711714193?text=Hi%20Shehan%20%26%20Chalani%2C%20I%27m%20joyfully%20accepting%20your%20wedding%20invitation%20for%20August%2030%2C%202026.%20%E2%80%94%20"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Quick RSVP via WhatsApp">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.81 11.81 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.69 5.522l-.999 3.648 3.798-.869zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.521.074-.793.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.711.306 1.265.489 1.697.626.713.226 1.362.194 1.875.118.572-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+          </svg>
+          <span>RSVP via WhatsApp</span>
+        </a>
+
+        <!-- <p class="rsvp-or outfit reveal-up"><span>or fill out the form below</span></p>
+
+        <form class="rsvp-form reveal-up" id="rsvpForm">
+          <div class="form-group">
+            <input type="text" id="guestName" class="form-input outfit" placeholder=" " required />
+            <label for="guestName" class="form-label outfit">Your Full Name</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-group">
+            <input type="email" id="guestEmail" class="form-input outfit" placeholder=" " required />
+            <label for="guestEmail" class="form-label outfit">Email Address</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <select id="attendance" class="form-input form-select outfit" required>
+                <option value="" disabled selected></option>
+                <option value="accept">Joyfully Accept</option>
+                <option value="decline">Respectfully Decline</option>
+              </select>
+              <label for="attendance" class="form-label outfit">Attendance</label>
+              <div class="form-line"></div>
+            </div>
+            <div class="form-group">
+              <select id="guests" class="form-input form-select outfit">
+                <option value="" disabled selected></option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+              </select>
+              <label for="guests" class="form-label outfit">Number of Guests</label>
+              <div class="form-line"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea id="message" class="form-input form-textarea outfit" placeholder=" " rows="3"></textarea>
+            <label for="message" class="form-label outfit">Message to the Couple</label>
+            <div class="form-line"></div>
+          </div>
+          <button type="submit" class="rsvp-btn outfit" id="rsvpSubmit">
+            <span>Send RSVP</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form> -->
+        <div class="rsvp-success hidden" id="rsvpSuccess">
+          <div class="success-icon">💕</div>
+          <h3 class="cormorant">Thank You!</h3>
+          <p class="outfit">Your response has been received with love.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer-section">
+      <div class="section-container footer-content">
+        <img src="assets/4.png" alt="" class="footer-floral" loading="lazy" />
+        <p class="footer-date outfit">june 11, 2026 | Hotel Isuru city, Dambulla </p>
+        <div class="footer-divider"></div>
+        <p class="footer-love outfit">With Love & Gratitude · Made with ❤️</p>
+        <button class="back-to-top outfit" id="backToTop" type="button" aria-label="Back to top">↑ Back to Top</button>
+      </div>
+    </footer>
+
+  </main>
+
+  <button class="music-toggle" id="musicToggle" type="button" title="Toggle background music" aria-label="Toggle background music" aria-pressed="false">
+    <span class="music-icon" aria-hidden="true">🎵</span>
+    <div class="music-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  </button>
+  <button class="blast-btn hidden" id="blastBtn" type="button" title="Celebrate with confetti" aria-label="Celebrate with confetti">
+    <span aria-hidden="true">🎉</span>
+  </button>
+
+  <script src="app.js"></script>
+</body>
+</html>
