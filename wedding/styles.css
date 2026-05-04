@@ -1139,8 +1139,16 @@ img { max-width: 100%; display: block; }
 @media (max-width: 380px) {
   .countdown-grid { grid-template-columns: repeat(2, 1fr); }
   .countdown-grid .countdown-card:last-child { grid-column: span 2; max-width: 50%; margin: 0 auto; }
-  .photo-strip { grid-template-columns: 1fr; }
-  .photo-frame img { height: 200px; }
+
+  .photo-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .photo-frame img {
+    height: 165px;
+  }
+
   .envelope-outer { width: 230px; height: 175px; }
   .envelope-monogram { font-size: .8rem; letter-spacing: 5px; }
   .wax-seal { width: 68px; height: 68px; }
