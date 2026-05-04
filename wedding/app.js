@@ -465,19 +465,16 @@ function updateCountdown() {
   if (diff <= 0) {
     setCountdownText('cdDays', '🎉');
     setCountdownText('cdHours', '🥂');
-    setCountdownText('cdMinutes', '💒');
     setCountdownText('cdSeconds', '💕');
     return;
   }
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
   setCountdownText('cdDays', days.toString().padStart(3, '0'));
   setCountdownText('cdHours', hours.toString().padStart(2, '0'));
-  setCountdownText('cdMinutes', minutes.toString().padStart(2, '0'));
   setCountdownText('cdSeconds', seconds.toString().padStart(2, '0'));
 }
 
