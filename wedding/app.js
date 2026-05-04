@@ -451,9 +451,16 @@ function initScrollAnimations() {
 }
 
 /* ─── 9. COUNTDOWN TIMER ─── */
+const weddingDate = new Date('2026-06-11T08:00:00');
+
+function setCountdownText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
 function updateCountdown() {
   const now = new Date();
-  const diff = weddingDate - now;
+  const diff = weddingDate.getTime() - now.getTime();
 
   if (diff <= 0) {
     setCountdownText('cdDays', '🎉');
@@ -466,13 +473,16 @@ function updateCountdown() {
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  
+  const seconds = Math.floor((diff / 1000) % 60);
 
-  animateNumber('cdDays', days.toString().padStart(3, '0'));
-  animateNumber('cdHours', hours.toString().padStart(2, '0'));
-  animateNumber('cdMinutes', minutes.toString().padStart(2, '0'));
-  
+  setCountdownText('cdDays', days.toString().padStart(3, '0'));
+  setCountdownText('cdHours', hours.toString().padStart(2, '0'));
+  setCountdownText('cdMinutes', minutes.toString().padStart(2, '0'));
+  setCountdownText('cdSeconds', seconds.toString().padStart(2, '0'));
 }
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
 /* ─── 10. RSVP FORM ─── */
 const rsvpForm = document.getElementById('rsvpForm');
