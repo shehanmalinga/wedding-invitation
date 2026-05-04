@@ -1202,8 +1202,23 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 380px) {
-  .countdown-grid { grid-template-columns: repeat(2, 1fr); }
-  
+  .countdown-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .countdown-card {
+    padding: 12px 4px;
+  }
+
+  .countdown-number {
+    font-size: 1.35rem;
+  }
+
+  .countdown-label {
+    font-size: .45rem;
+    letter-spacing: 1px;
+  }
 
   .photo-strip {
     grid-template-columns: repeat(2, 1fr);
@@ -1222,7 +1237,6 @@ img { max-width: 100%; display: block; }
   .env-floral-lt, .env-floral-rt, .env-floral-lb, .env-floral-rb { width: clamp(190px, 64vw, 260px); }
   .env-floral-lc, .env-floral-rc { width: clamp(110px, 30vw, 160px); opacity: .55; }
 }
-
 /* Touch devices: kill hover transforms (they fire on tap and feel laggy) */
 @media (hover: none) {
   .countdown-card:hover, .glass-card:hover, .photo-frame:hover, .timeline-card:hover,
