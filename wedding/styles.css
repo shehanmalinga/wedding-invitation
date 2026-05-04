@@ -837,13 +837,85 @@ img { max-width: 100%; display: block; }
 .schedule-highlight .schedule-event { font-weight: 500; }
 
 /* ══════════ GALLERY — PHOTO STRIP ══════════ */
-.gallery-section { background: var(--sand) var(--paper-texture); background-blend-mode: multiply; }
-.photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.photo-frame { background: var(--white); border-radius: 8px; padding: 8px; box-shadow: var(--shadow); transition: transform .5s ease; overflow: hidden; }
-.photo-frame:hover { transform: rotate(-1deg) scale(1.03); }
-.photo-frame:nth-child(even):hover { transform: rotate(1deg) scale(1.03); }
-.photo-frame img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; transition: transform .5s; }
-.photo-frame:hover img { transform: scale(1.05); }
+.gallery-section {
+  background: var(--sand) var(--paper-texture);
+  background-blend-mode: multiply;
+}
+
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.photo-frame {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: var(--shadow);
+  transition: transform .5s ease, box-shadow .5s ease;
+  overflow: hidden;
+}
+
+.photo-frame:hover {
+  transform: rotate(-1deg) scale(1.03);
+}
+
+.photo-frame:nth-child(even):hover {
+  transform: rotate(1deg) scale(1.03);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: transform .5s;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.05);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .photo-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .photo-frame img {
+    height: 220px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .photo-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .photo-frame {
+    padding: 7px;
+  }
+
+  .photo-frame img {
+    height: 190px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 380px) {
+  .photo-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .photo-frame img {
+    height: 165px;
+  }
+}
 
 /* ══════════ RSVP ══════════ */
 .rsvp-section { background: linear-gradient(180deg, var(--cream), var(--white)), var(--paper-texture); background-blend-mode: multiply; }
