@@ -451,7 +451,7 @@ function initScrollAnimations() {
 }
 
 /* ─── 9. COUNTDOWN TIMER ─── */
-const weddingDate = new Date('2026-08-30T16:00:00');
+const weddingDate = new Date('2026-07-11T08:00:00');
 function setCountdownText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
