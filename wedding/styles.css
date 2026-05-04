@@ -472,31 +472,96 @@ img { max-width: 100%; display: block; }
   background: linear-gradient(180deg, var(--cream), var(--sand)), var(--paper-texture);
   background-blend-mode: multiply;
 }
+
 .countdown-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
-  max-width: 900px;
+  max-width: 720px;
   margin: 0 auto;
 }
+
 .countdown-card {
-  background: var(--white); border-radius: 16px;
-  padding: 22px 10px; text-align: center;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 22px 10px;
+  text-align: center;
   box-shadow: var(--shadow);
   border: 1px solid rgba(46,139,122,.12);
   transition: transform .3s;
 }
-.countdown-card:hover { transform: translateY(-5px); }
+
+.countdown-card:hover {
+  transform: translateY(-5px);
+}
+
 .countdown-number {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem; font-weight: 600;
+  font-size: 2.4rem;
+  font-weight: 600;
   color: var(--teal-dark);
-  display: block; line-height: 1;
+  display: block;
+  line-height: 1;
 }
+
 .countdown-label {
-  font-size: .6rem; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--text-light);
-  margin-top: 6px; display: block;
+  font-size: .6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 6px;
+  display: block;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .countdown-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .countdown-card {
+    padding: 14px 6px;
+    border-radius: 12px;
+  }
+
+  .countdown-number {
+    font-size: 1.6rem;
+  }
+
+  .countdown-label {
+    font-size: .5rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .countdown-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .countdown-grid .countdown-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin: 0;
+  }
+
+  .countdown-card {
+    padding: 12px 4px;
+  }
+
+  .countdown-number {
+    font-size: 1.35rem;
+  }
+
+  .countdown-label {
+    font-size: .45rem;
+    letter-spacing: 1px;
+  }
 }
 
 /* ────────── SAVE THE DATE CARD ────────── */
@@ -1138,7 +1203,7 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 380px) {
   .countdown-grid { grid-template-columns: repeat(2, 1fr); }
-  .countdown-grid .countdown-card:last-child { grid-column: span 2; max-width: 50%; margin: 0 auto; }
+  
 
   .photo-strip {
     grid-template-columns: repeat(2, 1fr);
