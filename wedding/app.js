@@ -514,25 +514,15 @@ rsvpForm.addEventListener('submit', (e) => {
    when ScrollTrigger (with scrub) is active on the page. Falls back to a plain
    instant scroll if GSAP isn't loaded for any reason. */
 const backToTopBtn = document.getElementById('backToTop');
+
 if (backToTopBtn) {
   backToTopBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    const startY = window.pageYOffset
-      || document.documentElement.scrollTop
-      || document.body.scrollTop
-      || 0;
-    if (startY <= 0) return;
 
-    if (typeof gsap !== 'undefined' && gsap.to) {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: { y: 0, autoKill: false },
-        ease: 'power2.inOut',
-        overwrite: 'auto'
-      });
-    } else {
-      window.scrollTo(0, 0);
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   });
 }
 
