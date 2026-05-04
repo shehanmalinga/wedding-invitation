@@ -466,12 +466,12 @@ function updateCountdown() {
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);   // 👈 ADD THIS LINE
+  
 
   animateNumber('cdDays', days.toString().padStart(3, '0'));
   animateNumber('cdHours', hours.toString().padStart(2, '0'));
   animateNumber('cdMinutes', minutes.toString().padStart(2, '0'));
-  animateNumber('cdSeconds', seconds.toString().padStart(2, '0')); // 👈 ADD THIS
+  
 }
 
 /* ─── 10. RSVP FORM ─── */

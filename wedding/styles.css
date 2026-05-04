@@ -1065,17 +1065,8 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 380px) {
-  .countdown-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-
-  .countdown-grid .countdown-card:last-child {
-    grid-column: auto;
-    max-width: none;
-    margin: 0;
-  }
-
+  .countdown-grid { grid-template-columns: repeat(2, 1fr); }
+  .countdown-grid .countdown-card:last-child { grid-column: span 2; max-width: 50%; margin: 0 auto; }
   .photo-strip { grid-template-columns: 1fr; }
   .photo-frame img { height: 200px; }
   .envelope-outer { width: 230px; height: 175px; }
